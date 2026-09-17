@@ -1,0 +1,60 @@
+{
+  "name": "@yukira1n/pi-follow-up-priority",
+  "version": "0.1.0",
+  "description": "Durable, dynamically prioritized follow-up handling for Pi.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "files": [
+    "extensions/",
+    "scripts/patch-pi-compaction-queue.mjs",
+    "docs/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "npm run check && npm run test:unit",
+    "test:unit": "node --import tsx --test tests/*.test.ts",
+    "check": "biome check . && tsc -p tsconfig.json",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "patch:pi-compaction": "node scripts/patch-pi-compaction-queue.mjs --global",
+    "check:pi-compaction": "node scripts/patch-pi-compaction-queue.mjs --check --global",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "follow-up",
+    "steering",
+    "priority",
+    "todo",
+    "context"
+  ],
+  "pi": {
+    "extensions": [
+      "extensions/follow-up-priority.ts"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YukiRa1n/pi-follow-up-priority.git"
+  },
+  "author": "YukiRa1n",
+  "license": "MIT",
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.84.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.16",
+    "@earendil-works/pi-ai": "^0.85.1",
+    "@earendil-works/pi-coding-agent": "^0.85.1",
+    "@earendil-works/pi-tui": "^0.85.1",
+    "@types/node": "^22.18.3",
+    "tsx": "latest",
+    "typebox": "^1.3.7",
+    "typescript": "^5.9.3"
+  }
+}
