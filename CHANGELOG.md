@@ -2,6 +2,12 @@
 
 All notable changes to `@yukira1n/pi-follow-up-priority` are documented here.
 
+## [0.1.1] - 2026-09-17
+
+### Added
+
+- Pi 0.85.x host patches for image-only queue identity and lossless queue leasing across next-turn preparation and awaited-listener failures.
+
 ## [0.1.0] - 2026-09-17
 
 ### Added

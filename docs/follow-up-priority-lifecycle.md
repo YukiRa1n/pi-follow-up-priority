@@ -38,7 +38,7 @@ The settled-boundary wake handles a real user message stranded after Pi's last q
 
 Semantic receipts start only after Pi emits the finalized user message. During compaction, Pi 0.84.x/0.85.x first stores editor input in its private `compactionQueuedMessages` array, before extension `input` or `message_end` hooks can assign a follow-up ID. The affected host's rollback clears unrelated live queues and replaces the current compaction queue with an obsolete snapshot. No prompt projection or completion receipt can recover an item erased at that earlier boundary.
 
-Run `npm run patch:pi-compaction` from the repository to apply the fail-closed compatibility patch to the global Pi installation. It changes the dispatch commit point to prompt preflight acceptance, restores only the failed and undispatched suffix, prepends that suffix to concurrent compaction input, and never calls `session.clearQueue()` from this local rollback. Fully restart Pi afterwards.
+Run `npm run patch:pi` from the repository to apply the fail-closed compatibility patches to the global Pi installation. They change the compaction dispatch commit point to prompt preflight acceptance, restore only the failed and undispatched suffix, retire image-only queue rows by message identity, and retain drained steer/follow-up entries until their transcript admission succeeds. Fully restart Pi afterwards.
 
 ## Verification and activation
 

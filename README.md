@@ -42,11 +42,11 @@ These Pi versions can lose or duplicate input queued during compaction rollback 
 
 ```bash
 npm install
-npm run check:pi-compaction
-npm run patch:pi-compaction
+npm run check:pi
+npm run patch:pi
 ```
 
-The patch validates the Pi package, supported version, prompt-preflight API, vulnerable method shape, and bundled target count. It keeps adjacent `.compaction-queue-original*` backups, is idempotent, and refuses unknown host shapes. Fully restart Pi after applying it. Recheck after each Pi upgrade.
+The host patches validate the Pi package, supported version, vulnerable method shapes, and bundled target count. They preserve concurrent compaction input, retire image-only queue rows by message identity, and keep steer/follow-up entries queued until transcript admission succeeds. Adjacent `.compaction-queue-original*` and `.follow-up-queue-original*` backups are retained. The patches are idempotent and refuse unknown host shapes. Fully restart Pi after applying them. Recheck after each Pi upgrade.
 
 ## Verification
 

@@ -1,6 +1,6 @@
 {
   "name": "@yukira1n/pi-follow-up-priority",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Durable, dynamically prioritized follow-up handling for Pi.",
   "type": "module",
   "engines": {
@@ -9,6 +9,7 @@
   "files": [
     "extensions/",
     "scripts/patch-pi-compaction-queue.mjs",
+    "scripts/patch-pi-follow-up-queues.mjs",
     "docs/",
     "README.md",
     "LICENSE"
@@ -21,6 +22,10 @@
     "lint": "biome lint .",
     "patch:pi-compaction": "node scripts/patch-pi-compaction-queue.mjs --global",
     "check:pi-compaction": "node scripts/patch-pi-compaction-queue.mjs --check --global",
+    "patch:pi-queues": "node scripts/patch-pi-follow-up-queues.mjs --global",
+    "check:pi-queues": "node scripts/patch-pi-follow-up-queues.mjs --check --global",
+    "patch:pi": "npm run patch:pi-compaction && npm run patch:pi-queues",
+    "check:pi": "npm run check:pi-compaction && npm run check:pi-queues",
     "prepublishOnly": "npm test"
   },
   "keywords": [
